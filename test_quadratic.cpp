@@ -78,3 +78,12 @@ TEST(LinearTest, NoRoots) {
 TEST(LinearTest, InfiniteSolutionsThrows) {
     EXPECT_THROW(quadratic(0, 0, 0), std::invalid_argument);
 }
+//Тест, который находит два отрицательных корня
+TEST(QuadraticTest, TwoNegativeRoots) {
+    std::vector<double> result = sortedRoots(1, 5, 6);
+    ASSERT_EQ(result.size(), 2u);
+    EXPECT_DOUBLE_EQ(result[0], -3);
+    EXPECT_DOUBLE_EQ(result[1], -2);
+}
+
+
