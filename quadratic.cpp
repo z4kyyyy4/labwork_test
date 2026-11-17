@@ -1,18 +1,25 @@
 #include "quadratic.h"
 #include <iostream>
 #include <cmath>
+#include <stdexcept>
 
 
 std::vector <double> quadratic(double a, double b, double c) {
     std::vector <double> result;
     if (a != 0) {
         double D = ((b * b) - 4 * a * c);
-        if (D < 0) {
+        double eps = 1e-12;
+        if (D < -eps) {
             std::cout << "Нет корней" << std::endl;
             return result;
         }
-        else if (D == 0) {
-            double x = (((-1) * b) / (2 * a));
+        else if (std::abs(D) <= eps) {
+            double x = -b / (2 * a);
+
+            if (x == 0) {
+                x = 0.0;
+            }
+
             result.push_back(x);
             return result;
         }
@@ -36,8 +43,7 @@ std::vector <double> quadratic(double a, double b, double c) {
                 return result;
             }
             else {
-                std::cout << "Бесконечное количество решений" << std::endl;
-                return result;
+                throw std::invalid_argument("Бесконечное количество решений");
             }
         }
     }
