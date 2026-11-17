@@ -3,7 +3,8 @@
 #include <cmath>
 #include <stdexcept>
 
-
+//Функция, которая считает корни квадратного уравнения при заданых коэффициентах a, b, c.
+//Возвращает вектор с корнями. Пример вызова: quadratic(5.0,-4.0,-1.0). Вывод: {-0.2, 1}
 std::vector <double> quadratic(double a, double b, double c) {
     std::vector <double> result;
     if (a != 0) {
