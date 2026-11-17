@@ -4,9 +4,9 @@ project(labwork_test CXX)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-add_library(quadratic quadratic.cpp)
+add_library(quadratic bin/quadratic.cpp)
 
-add_executable(app main.cpp)
+add_executable(app bin/main.cpp)
 target_link_libraries(app quadratic)
 
 include(FetchContent)
@@ -17,7 +17,7 @@ FetchContent_Declare(
 FetchContent_MakeAvailable(googletest)
 
 enable_testing()
-add_executable(quadratic_tests test_quadratic.cpp)
+add_executable(quadratic_tests bin/test_quadratic.cpp)
 target_link_libraries(quadratic_tests quadratic GTest::gtest_main)
 
 include(GoogleTest)
